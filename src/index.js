@@ -1,7 +1,7 @@
 // Importações dos módulos necessários
 const express = require('express')
 const api = express()
-const userRoute = require('./routes/users.status')
+const userRoute = require('./routes/users.route')
 const status = require('./routes/status.route')
 
 // Configuração da api para receber JSON
