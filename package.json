@@ -1,0 +1,9 @@
+{
+  "name": "test-FullstackJSJunior",
+  "version": "1.0.0",
+  "description": "Teste Fullstack JS Júnior para a empresa Contele",
+  "main": "index.js",
+  "author": "Marcos M. Ferreira",
+  "license": "MIT",
+  "private": true
+}
