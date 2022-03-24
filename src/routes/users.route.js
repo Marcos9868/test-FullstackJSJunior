@@ -2,18 +2,44 @@ const router = require('express')
 
 const usersRoute = router()
 
-usersRoute.get('/v1/users', (req, res) => {
-  res.send({ uuid: 0, email: 'marcos@marcos.com', senha: '1234' })
+const listUsers = []
+
+// Lista todos os usuários
+usersRoute.get('/api/v1/users', (req, res) => {
+  res.send(listUsers)
 })
 
-// usersRoute.get('/v1/users/:uuid' (req, res) => {
-//   res.send(newUser)
-// })
+// Lista um usuário específico
+usersRoute.get('/api/v1/users/:uuid', (req, res) => {
+  const uuid = req.params.uuid
+  console.log(uuid)
+  res.status(200).send({ uuid })
+})
 
-usersRoute.post('/v1/users', (req, res) => {
+// Cria um usuário
+usersRoute.post('/api/v1/users', (req, res) => {
   const newUser = req.body
-  console.log(newUser)
   res.send(newUser)
+  console.log(newUser)
+  listUsers.push(newUser)
+})
+
+// Altera dados de um usuário
+usersRoute.put('/api/v1/users/:uuid', (req, res) => {
+  const uuid = req.params.uuid
+  const modifiedUser = req.body
+  modifiedUser.uuid = uuid
+  res.status(200).send(modifiedUser)
+})
+
+// Deleta todos os usuários da lista
+usersRoute.delete('/api/v1/users', (req, res) => {
+
+})
+
+// Deleta um usuário específico da lista
+usersRoute.delete('/api/v1/users/:uuid', (req, res) => {
+  res.status(200)
 })
 
 module.exports = usersRoute
