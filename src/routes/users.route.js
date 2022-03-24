@@ -41,7 +41,8 @@ usersRoute.delete('/api/v1/users', (req, res) => {
 
 // Deleta um usuário específico da lista
 usersRoute.delete('/api/v1/users/:uuid', (req, res) => {
-  res.status(200)
+  const uuid = req.params.uuid
+  res.status(200).send({ uuid })
 })
 
 module.exports = usersRoute
