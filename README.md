@@ -11,7 +11,6 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 - Javascript
 - NodeJS
 - Express
-- Sequelize
 - PG (PostgreSQL)
 
 ### Banco de Dados Utilizados:
@@ -35,11 +34,6 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 
 ```npm install nodemon``` ou
 ```yarn add nodemon```
-
-- Sequelize:
-
-```npm install sequelize``` ou
-```yarn add sequelize```
 
 - PostgreSQL (PG):
 
