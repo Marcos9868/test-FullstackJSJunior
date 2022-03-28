@@ -26,11 +26,13 @@ usersRoute.post('/api/v1/users', async (req, res) => {
 })
 
 // Altera dados de um usuário
-usersRoute.put('/api/v1/users/:uuid', (req, res) => {
+usersRoute.put('/api/v1/users/:uuid', async (req, res) => {
   const uuid = req.params.uuid
   const modifiedUser = req.body
   modifiedUser.uuid = uuid
-  res.status(200).send(modifiedUser)
+
+  await userRepository.updateUser(modifiedUser)
+  res.sendStatus(200)
 })
 
 // Deleta todos os usuários da lista
