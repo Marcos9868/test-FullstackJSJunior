@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS list_users(
   PRIMARY KEY (uuid)
 )
 
-INSERT INTO list_users ( useremail, password) VALUES ('marcos@test.com', crypt('test123', 'my_salt'))
+INSERT INTO list_users (useremail, password) VALUES ('marcos@test.com', crypt('test123', 'my_salt'))
