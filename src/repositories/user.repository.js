@@ -41,7 +41,20 @@ class userRepository {
     const { rows } = await db.query(script, values)
     const [ newUser] = rows
     return newUser.uuid
+  }
+  // Função que altera dados de um usuário
+  async updateUser(user) {
+    const script = `
+      UPDATE list_users
+      SET 
+        useremail = $1,
+        password = crypt($2, 'my_salt')
+      WHERE uuid = $3
+    `
 
+    const values = [user.useremail, user.password, user.uuid]
+
+    await db.query(script, values)
   }
 }
 
