@@ -56,6 +56,26 @@ class userRepository {
 
     await db.query(script, values)
   }
+
+  async removeAllUsers() {
+    const script = `
+      TRUNCATE TABLE list_users
+    `
+
+    await db.query(script)
+  }
+
+  // Função que remove um usuário através de seu ID
+  async removeUser(uuid) {
+    const script = `
+      DELETE FROM list_users
+      WHERE uuid = $1
+    `
+
+    const values = [uuid]
+
+    await db.query(script, values)
+  }
 }
 
 // // Exporta uma instância para que possa ser usado em qualquer parte
