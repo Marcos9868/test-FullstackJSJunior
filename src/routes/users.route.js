@@ -1,12 +1,14 @@
 const router = require('express')
+const userRepository = require('../repositories/user.repository')
 
 const usersRoute = router()
 
-const listUsers = []
+// const listUsers = []
 
 // Lista todos os usuários
-usersRoute.get('/api/v1/users', (req, res) => {
-  res.send(listUsers)
+usersRoute.get('/api/v1/users', async (req, res) => {
+  const users = await userRepository.findAllUsers()
+  res.send(users)
 })
 
 // Lista um usuário específico
@@ -42,7 +44,7 @@ usersRoute.delete('/api/v1/users', (req, res) => {
 // Deleta um usuário específico da lista
 usersRoute.delete('/api/v1/users/:uuid', (req, res) => {
   const uuid = req.params.uuid
-  res.status(200).send({ uuid })
+  res.status(200).send('User Removed')
 })
 
 module.exports = usersRoute
