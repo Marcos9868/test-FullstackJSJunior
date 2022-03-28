@@ -16,9 +16,8 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 ### Banco de Dados Utilizados:
 
 - PostgreSQL
-- Docker
 
-### Instalação e Utilização:
+### Instalação:
 
 - Instalação do node_modules:
 
@@ -39,3 +38,52 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 
 ```npm install pg``` ou
 ```yarn add pg```
+
+### Como utilizar:
+
+Para os testes das rotas da API, recomendo que utilize o simulador de requisições Insomnia.
+
+Dentro da API, existem 7 rotas e 4 endpoints, que são:
+  - GET/teste
+  - GET/api/v1/users
+  - GET/api/v1/users/:uuid
+  - POST/api/v1/users
+  - PUT/api/v1/users/:uuid
+  - DELETE/api/v1/users
+  - DELETE/api/v1/users/:uuid
+
+### Função de cada rota:
+
+#### GET/teste:
+
+Como próprio nome diz, apenas mostra se a API está funcionando
+
+#### GET/api/v1/users:
+
+Esta rota recupera a lista de todos os dados dos usuários cadastrados.
+
+#### GET/api/v1/users/:uuid:
+
+Assim como a anterior, ela nos traz os dados de um único usuário, através de seu identificador (UUID)
+
+#### POST/api/v1/users:
+
+Esta rota permite a criação de um novo usuário no banco de dados. Após criado, ele gera um UUID, que pode ser utilizado na rota GET, PUT ou DELETE.
+
+### PUT/api/v1/users/:uuid:
+
+Esta rota, através de um uuid, permite alterar os dados do usuário que estão guardados no banco de dados.
+
+#### DELETE/api/v1/users:
+
+Esta rota remove todos os dados dos usuários listados no banco de dados.
+
+#### DELETE/api/v1/users/:uuid:
+
+Esta rota remove apenas um único usuário, através de seu uuid
+
+### Observações:
+
+- Foi utilizado um middleware para tratamento de erros para as requisições.
+- O error handler é genérico, mas trata os erros da API.
+- Todo o código desenvolvido é JS puro, contudo, boas práticas foram impregados para melhor organização do código.
