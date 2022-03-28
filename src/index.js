@@ -4,6 +4,9 @@ const api = express()
 const userRoute = require('./routes/users.route')
 const status = require('./routes/status.route')
 
+// Conexão com o banco de dados
+const db = require('./db/config')
+
 // Configuração da api para receber JSON
 api.use(express.json())
 
