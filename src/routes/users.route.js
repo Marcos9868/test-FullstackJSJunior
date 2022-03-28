@@ -36,15 +36,15 @@ usersRoute.put('/api/v1/users/:uuid', async (req, res) => {
 })
 
 // Deleta todos os usuários da lista
-usersRoute.delete('/api/v1/users', (req, res) => {
-  const usersList = listUsers
-  listUsers.pop()
-  res.send('Removed')
+usersRoute.delete('/api/v1/users', async (req, res) => {
+  await userRepository.removeAllUsers()
+  res.send('All Users Removed')
 })
 
 // Deleta um usuário específico da lista
-usersRoute.delete('/api/v1/users/:uuid', (req, res) => {
+usersRoute.delete('/api/v1/users/:uuid', async (req, res) => {
   const uuid = req.params.uuid
+  await userRepository.removeUser(uuid)
   res.status(200).send('User Removed')
 })
 
