@@ -3,8 +3,6 @@ const userRepository = require('../repositories/user.repository')
 
 const usersRoute = router()
 
-// const listUsers = []
-
 // Lista todos os usuários
 usersRoute.get('/api/v1/users', async (req, res) => {
   const users = await userRepository.findAllUsers()
@@ -20,11 +18,11 @@ usersRoute.get('/api/v1/users/:uuid', async (req, res) => {
 })
 
 // Cria um usuário
-usersRoute.post('/api/v1/users', (req, res) => {
+usersRoute.post('/api/v1/users', async (req, res) => {
   const newUser = req.body
-  res.status(201).send(newUser)
-  console.log(newUser)
-  listUsers.push(newUser)
+  const uuid = await userRepository.createUser(newUser)
+  res.status(201).send(uuid)
+  console.log(uuid)
 })
 
 // Altera dados de um usuário
