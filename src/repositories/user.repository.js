@@ -26,6 +26,23 @@ class userRepository {
 
     return user || []
   }
+
+  // Função que cria o usuário no Banco de Dados
+  async createUser(user) {
+    const script = `
+      INSERT INTO list_users
+      (useremail, password)
+      VALUES ($1, crypt($2, 'my_salt'))
+      RETURNING uuid
+    `
+
+    const values = [user.useremail, user.password]
+
+    const { rows } = await db.query(script, values)
+    const [ newUser] = rows
+    return newUser.uuid
+
+  }
 }
 
 // // Exporta uma instância para que possa ser usado em qualquer parte
