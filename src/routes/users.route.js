@@ -12,10 +12,11 @@ usersRoute.get('/api/v1/users', async (req, res) => {
 })
 
 // Lista um usuário específico
-usersRoute.get('/api/v1/users/:uuid', (req, res) => {
+usersRoute.get('/api/v1/users/:uuid', async (req, res) => {
   const uuid = req.params.uuid
-  console.log(uuid)
-  res.send({ uuid })
+  const user = await userRepository.findById(uuid)
+  console.log(user)
+  res.send(user)
 })
 
 // Cria um usuário
