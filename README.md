@@ -44,6 +44,11 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 ```npm install pg``` ou
 ```yarn add pg```
 
+- SwaggerUIExpress:
+
+```npm install swagger-ui-express``` ou
+```yarn add swagger-ui-express```
+
 ### Como utilizar:
 
 Para os testes das rotas da API, recomendo que utilize o simulador de requisições Insomnia.
