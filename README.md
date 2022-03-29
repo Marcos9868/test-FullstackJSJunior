@@ -12,10 +12,15 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 - NodeJS
 - Express
 - PG (PostgreSQL)
+- SwaggerUIExpress
 
 ### Banco de Dados Utilizados:
 
 - PostgreSQL
+
+### Documentação:
+
+- Swagger
 
 ### Instalação:
 
