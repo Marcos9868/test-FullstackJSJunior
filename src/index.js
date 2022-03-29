@@ -7,6 +7,7 @@ const errorHandler = require('./middlewares/error.handler.middleware')
 const authorizationRouter = require('./routes/authorization.route')
 const swaggerUI = require('swagger-ui-express')
 const swaggerDocs = require('./swagger.json')
+const bearerAuthenticationMiddleware = require('./middlewares/bearer.authentication.middleware')
 
 // Conexão com o banco de dados
 const db = require('./db/config')
@@ -21,7 +22,7 @@ api.use('/api/v1/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 api.use(status)
 
 // Rota dos usuários
-api.use(userRoute)
+api.use(bearerAuthenticationMiddleware, userRoute)
 
 // Rota de autenticações
 api.use(authorizationRouter)
