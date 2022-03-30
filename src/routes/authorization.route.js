@@ -1,6 +1,7 @@
 const router = require('express')
 const JWT = require('jsonwebtoken')
 const basicAuthetication = require('../middlewares/basicAuthetication.middleware')
+const jwtAuthenticationMiddleware = require('../middlewares/jwt.authentication.middleware')
 const ForbiddenError = require('../models/errors/forbidden.error')
 
 const authorizationRouter = router()
@@ -23,6 +24,10 @@ authorizationRouter.post('/api/v1/users/token', basicAuthetication, async (req, 
   } catch (error) {
     next(error)
   }
+})
+
+authorizationRouter.post('/api/v1/users/token/validate', jwtAuthenticationMiddleware, async (req, res, next) => {
+  res.sendStatus(200)
 })
 
 module.exports = authorizationRouter
