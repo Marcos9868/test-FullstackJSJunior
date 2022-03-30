@@ -42,6 +42,3 @@ async function jwtAuthenticationMiddleware(req, res, next) {
 }
 
 module.exports = jwtAuthenticationMiddleware
-// {
-// 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyZW1haWwiOiJ0ZXN0ZUB0ZXN0ZS5jb20iLCJpYXQiOjE2NDg1ODYxMDgsInN1YiI6IjA0MzA1NGY5LWY4NTItNGNlNy1hYWNmLWViODE3M2U3YzUwYSJ9.ESdQEbB-Z712EB7c0hm_PmH4JyYIZ9GYEkoJd147Bw0"
-// }
