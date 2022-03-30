@@ -22,11 +22,14 @@ api.use('/api/v1/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 // Rota Teste da API
 api.use(status)
 
-// Rota dos usuários
-api.use(jwtAuthenticationMiddleware, userRoute)
-
 // Rota de autenticações
 api.use(authorizationRouter)
+
+// Rota JWT
+api.use(jwtAuthenticationMiddleware)
+
+// Rota dos usuários
+api.use(userRoute)
 
 // Configuração dos Handlers de Erro
 api.use(errorHandler)
