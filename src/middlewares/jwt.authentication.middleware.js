@@ -24,7 +24,7 @@ async function jwtAuthenticationMiddleware(req, res, next) {
       }
       const uuid = tokenPayload.sub
 
-      const user = {
+      user = {
         uuid: tokenPayload.sub,
         useremail: tokenPayload.useremail
       }
@@ -38,6 +38,7 @@ async function jwtAuthenticationMiddleware(req, res, next) {
     next()
   } catch (error) {
     next(error)
+    console.log(error)
   }
 }
 
