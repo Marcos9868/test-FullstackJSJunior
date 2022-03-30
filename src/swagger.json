@@ -1,0 +1,185 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "test-FullstackJSJúnior",
+    "description": "Teste Fullstack JS Júnior para a empresa Contele",
+    "contact": {
+      "email": "marcos_m_ferreira@outlook.com",
+      "linkedin": "https://www.linkedin.con/in/marcos-melo-ferreira/"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000/api/v1/teste"
+    }
+  ],
+  "paths": {
+    "/api/v1/users/token": {
+      "post": {
+        "summary": "Login de Usuário",
+        "description": "Essa rota é responsável por fazer o login do usuário e dela sairá um token",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
+    "/api/v1/users/token/validate": {
+      "post": {
+        "summary": "Validação de Usuário",
+        "description": "Essa rota é responsável por fazer a validação do token gerado através do login",
+        "tags": ["Users"],
+        "requestBody": {
+          
+        },
+        "responses": {
+          "200": {
+            "description": "Validated Token"
+          },
+          "401": "Unauthorized"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "summary": "Lista de Usuários",
+        "description": "Essa rota é responsável por listar todos os usuários armazenados no banco de dados",
+        "tags": ["Users"],
+        "requestBody": {},
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "users": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "401": "Unauthorized"
+        }
+      },
+      "post": {
+        "summary": "Criação de Usuário",
+        "description": "Essa rota é responsável por criar e adicionar um usuário no banco de dados",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "useremail": "api@teste.com",
+                "password": "api"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": "Created",
+          "401": "Unauthorized"
+        }
+      },
+      "delete": {
+        "summary": "Deleção Usuários",
+        "description":"Essa rota é responsável por deletar todos os usuários do banco de dados",
+        "tags": ["Users"],
+        "responses": {
+          "200": "User Removed",
+          "401": "Unauthorized"
+        }
+      }
+    },
+    "/api/v1/users/:uuid": {
+      "get": {
+        "summary": "Busca usuário específico",
+        "description": "Essa rota é responsável por buscar um usuário através de seu UUID",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "Lista de Usuários",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            } 
+          },
+          "400": "Bad Request",
+          "401": "Unauthorized"
+        }
+      },
+      "put": {
+        "summary": "Alteração de Usuário",
+        "description": "Essa rota é responsável por alterar os dados de usuário no banco de dados",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "useremail": {
+                    "type": "string",
+                    "example": "teste@teste.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "teste"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {},
+          "401": "Unauthorized"
+        }
+      },
+      "delete": {
+        "summary": "Deleção Usuário",
+        "description":"Essa rota é responsável por deletar um usuário através de seu UUID",
+        "tags": ["Users"],
+        "requestBody": {
+
+        },
+        "responses": {
+          "200": "User Removed",
+          "401": "Unauthorized"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "useremail": {
+            "type": "string",
+            "example": "marcos@teste.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "marcos"
+          }
+        }
+      }
+    }
+  }
+}
