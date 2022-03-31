@@ -56,6 +56,8 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 
 ### Como utilizar:
 
+OBS: Para melhor experiência de uso, siga os exemplos deixados no swagger, assim, facilitando sua utilização e evitando maiores incômodos.
+
 Após a instalação das dependências acima, basta entrar no terminal e digitar o seguinte comando:
 
 ```npm start``` ou ```yarn start```
