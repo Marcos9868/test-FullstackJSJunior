@@ -49,6 +49,11 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 ```npm install swagger-ui-express``` ou
 ```yarn add swagger-ui-express```
 
+- SwaggerJSDoc:
+
+```npm install swagger-jsdoc``` ou
+```yarn add swagger-jsdoc```
+
 ### Como utilizar:
 
 Após a instalação das dependências acima, basta entrar no terminal e digitar o seguinte comando:
@@ -97,7 +102,7 @@ Assim como a anterior, ela nos traz os dados de um único usuário, através de 
 
 Esta rota permite a criação de um novo usuário no banco de dados. Após criado, ele gera um UUID, que pode ser utilizado na rota GET, PUT ou DELETE.
 
-### PUT/api/v1/users/:uuid:
+#### PUT/api/v1/users/:uuid:
 
 Esta rota, através de um uuid, permite alterar os dados do usuário que estão guardados no banco de dados.
 
