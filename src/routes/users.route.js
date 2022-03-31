@@ -40,7 +40,7 @@ usersRoute.put('/api/v1/users/:uuid', async (req, res, next) => {
 
     await userRepository.updateUser(modifiedUser)
     console.log(modifiedUser)
-    res.sendStatus(200)
+    res.status(200).send(modifiedUser)
   } catch (error) {
     next(error)
   }
