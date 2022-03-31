@@ -4,6 +4,7 @@ const userRepository = require('../repositories/user.repository')
 async function basicAuthetication(req, res, next) {
   try {
     const authorizationHeader = req.headers['authorization']
+    console.log(authorizationHeader)
 
     if (!authorizationHeader) {
       throw new ForbiddenError('Uninformed Credentials')
