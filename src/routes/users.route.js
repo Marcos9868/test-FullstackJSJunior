@@ -32,12 +32,19 @@ usersRoute.post('/api/v1/users', async (req, res, next) => {
 
 // Altera dados de um usuário
 usersRoute.put('/api/v1/users/:uuid', async (req, res, next) => {
-  const uuid = req.params.uuid
-  const modifiedUser = req.body
-  modifiedUser.uuid = uuid
+  try {
+    const uuid = req.params.uuid
+    console.log(uuid)
+    const modifiedUser = req.body
+    modifiedUser.uuid = uuid
 
-  await userRepository.updateUser(modifiedUser)
-  res.sendStatus(200)
+    await userRepository.updateUser(modifiedUser)
+    console.log(modifiedUser)
+    res.sendStatus(200)
+  } catch (error) {
+    next(error)
+  }
+  
 })
 
 // Deleta todos os usuários da lista
@@ -48,9 +55,14 @@ usersRoute.delete('/api/v1/users', async (req, res, next) => {
 
 // Deleta um usuário específico da lista
 usersRoute.delete('/api/v1/users/:uuid', async (req, res, next) => {
-  const uuid = req.params.uuid
-  await userRepository.removeUser(uuid)
-  res.status(200).send('User Removed')
+  try {
+    const uuid = req.params.uuid
+    await userRepository.removeUser(uuid)
+    res.status(200).send('User Removed')
+  } catch (error) {
+    next(error)
+  }
+  
 })
 
 module.exports = usersRoute
