@@ -4,7 +4,7 @@ Esta proposta de projeto é uma avaliação para a função citada no título pa
 
 ### Objetivo do projeto:
 
-Este projeto visa armazenar dados do usuário, como email e senha, além de poder buscar estas informações contidas em um banco de dados, alterar e removê-las do banco. Cada usuário possuirá um ID único, podendo através desse, alterar e remover especificamente o usuário.
+Este projeto visa armazenar dados do usuário, como email e senha, além de poder buscar estas informações contidas em um banco de dados, alterar e removê-las do banco. Cada usuário possuirá um ID único, podendo através desse, alterar e remover especificamente o usuário. Somente poderá acessar a API, o usuário que receber o token gerado no login e validado o mesmo.
 
 ### Stacks Utilizadas:
 
@@ -18,7 +18,7 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 
 - PostgreSQL
 
-### Documentação:
+### Documentação e Testes:
 
 - Swagger
 
@@ -51,10 +51,18 @@ Este projeto visa armazenar dados do usuário, como email e senha, além de pode
 
 ### Como utilizar:
 
-Para os testes das rotas da API, recomendo que utilize o simulador de requisições Insomnia.
+Após a instalação das dependências acima, basta entrar no terminal e digitar o seguinte comando:
 
-Dentro da API, existem 7 rotas e 4 endpoints, que são:
-  - GET/teste
+```npm start``` ou ```yarn start```
+
+Utilize o link abaixo para abrir o Swagger e poder acessar a API
+
+```http://localhost:4000/api/v1/docs```
+
+Dentro da API, existem 9 rotas e 4 endpoints, que são:
+  - POST/api/v1/users/login
+  - POST/api/v1/users/login/validate
+  - GET/api/v1/teste
   - GET/api/v1/users
   - GET/api/v1/users/:uuid
   - POST/api/v1/users
@@ -64,7 +72,16 @@ Dentro da API, existem 7 rotas e 4 endpoints, que são:
 
 ### Função de cada rota:
 
-#### GET/teste:
+#### POST/api/v1/users/login:
+
+Esta rota é a porta de entrada para a API.
+Nela você insere a autorização, feito em base64 para receber um token.
+
+#### POST/api/v1/users/login/validate:
+
+Esta rota, serve para validar o token gerado pela rota anterior, assim confirmando a identidade de quem esta acessando a API.
+
+#### GET/api/v1/teste:
 
 Como próprio nome diz, apenas mostra se a API está funcionando
 
@@ -95,5 +112,10 @@ Esta rota remove apenas um único usuário, através de seu uuid
 ### Observações:
 
 - Foi utilizado um middleware para tratamento de erros para as requisições.
-- O error handler é genérico, mas trata os erros da API.
-- Todo o código desenvolvido é JS puro, contudo, boas práticas foram impregados para melhor organização do código.
+- O error handler é genérico, mas trata todos erros da API.
+- Todo o código desenvolvido é JS puro.
+
+### Contato:
+
+- Linkedin: ```https://www.linkedin.com/in/marcos-melo-ferreira/```
+- Outlook: ```marcos_m_ferreira@outlook.com```
