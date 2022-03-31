@@ -6,7 +6,7 @@ const ForbiddenError = require('../models/errors/forbidden.error')
 
 const authorizationRouter = router()
 
-authorizationRouter.post('/api/v1/users/token', basicAuthetication, async (req, res, next) => {
+authorizationRouter.post('/api/v1/users/login', basicAuthetication, async (req, res, next) => {
   try {
     const user = req.user
 
@@ -26,7 +26,7 @@ authorizationRouter.post('/api/v1/users/token', basicAuthetication, async (req, 
   }
 })
 
-authorizationRouter.post('/api/v1/users/token/validate', jwtAuthenticationMiddleware, async (req, res, next) => {
+authorizationRouter.post('/api/v1/users/login/validate', jwtAuthenticationMiddleware, async (req, res, next) => {
   res.sendStatus(200)
 })
 
