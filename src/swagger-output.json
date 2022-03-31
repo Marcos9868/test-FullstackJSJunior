@@ -29,7 +29,7 @@
         }
       }
     },
-    "/api/v1/users/token": {
+    "/api/v1/users/login": {
       "post": {
         "description": "Login de usuário",
         "parameters": [
@@ -50,7 +50,7 @@
         }
       }
     },
-    "/api/v1/users/token/validate": {
+    "/api/v1/users/login/validate": {
       "post": {
         "description": "Valida o token que recebemos quando é feito o login na rota anterior",
         "parameters": [
@@ -211,11 +211,11 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "403": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -238,11 +238,11 @@
           "200": {
             "description": "User Removed"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "403": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
