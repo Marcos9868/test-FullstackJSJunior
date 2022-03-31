@@ -1,0 +1,263 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Test-FullstackJSJúnior",
+    "description": "Teste Fullstack JS Júnior para a empresa Contele",
+    "version": "1.0.0"
+  },
+  "host": "localhost:4000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/teste": {
+      "get": {
+        "description": "Rota de teste da API",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/users/token": {
+      "post": {
+        "description": "Login de usuário",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "example": "Basic bWFyY29zQHRlc3RlLmNvbTptYXJjb3M="
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/users/token/validate": {
+      "post": {
+        "description": "Valida o token que recebemos quando é feito o login na rota anterior",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "example": "Bearer + {Token do login} "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Validated Token"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/users": {
+      "get": {
+        "description": "Lista os usuários armazenados no banco de dados",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "example": "Bearer + {Token do login} "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "description": "Cria e adiciona um usuário no banco de dados e retorna um UUID para consulta",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "example": "Bearer + {Token do login} "
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "useremail": {
+                  "type": "string",
+                  "example": "testando@teste.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "testando"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove todos os usuários do banco de dados",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "example": "Bearer + {Token do login} "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Users Removed"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/v1/users/{uuid}": {
+      "get": {
+        "description": "Busca somente um usuário no banco de dados atraveś de seu UUID",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "example": "Bearer + {Token do login} "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "description": "Altera os dados de um usuário no banco de dados",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "example": "Bearer + {Token do login} "
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "useremail": {
+                  "type": "string",
+                  "example": "any"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "description": "Remove um usuário do banco de dados",
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string",
+            "example": "Bearer + {Token do login} "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Removed"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "BearerAuth": {
+      "type": "http",
+      "scheme": "bearer"
+    }
+  }
+}
